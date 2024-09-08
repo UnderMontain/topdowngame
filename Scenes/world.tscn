@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyr1odqiu0dka"]
+
+[ext_resource type="Texture2D" uid="uid://ddwf3cqfjjxxd" path="res://Scenes/square_PNG75.webp" id="1_fh00x"]
+[ext_resource type="PackedScene" uid="uid://ywvfbdjrg35u" path="res://Scenes/player.tscn" id="1_w0oi8"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ff8aw"]
+polygon = PackedVector2Array(-116, -30, 14, -24, 26, 19, -32, 78)
+
+[node name="World" type="Node2D"]
+
+[node name="SquarePng75" type="Sprite2D" parent="."]
+position = Vector2(565, 347)
+scale = Vector2(6.42, 6.42)
+texture = ExtResource("1_fh00x")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(439, 287)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D"]
+occluder = SubResource("OccluderPolygon2D_ff8aw")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(439, 287)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D2"]
+position = Vector2(198, 150)
+occluder = SubResource("OccluderPolygon2D_ff8aw")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_w0oi8")]
+position = Vector2(305, 384)
+motion_mode = 1

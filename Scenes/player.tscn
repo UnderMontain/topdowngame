@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ywvfbdjrg35u"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_vvecy"]
+[ext_resource type="PackedScene" uid="uid://dj3r52asryqin" path="res://bullet.tscn" id="2_5kc3x"]
+[ext_resource type="Texture2D" uid="uid://gv7iu1x4n25h" path="res://icon.svg" id="2_g2nai"]
+[ext_resource type="Texture2D" uid="uid://bgafwuirmfh0" path="res://Scenes/2d_lights_and_shadows_neutral_point_light.webp" id="3_dbxjn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_baavr"]
+radius = 17.0
+height = 74.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_vvecy")
+bullet_scene = ExtResource("2_5kc3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_baavr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("2_g2nai")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_filter_smooth = 0.8
+texture = ExtResource("3_dbxjn")
+texture_scale = 4.81
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.029
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

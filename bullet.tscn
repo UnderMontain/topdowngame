@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj3r52asryqin"]
+
+[ext_resource type="Texture2D" uid="uid://byyr6x367rdt1" path="res://Scenes/19.png" id="1_7ts17"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_esauv"]
+[ext_resource type="Texture2D" uid="uid://bgafwuirmfh0" path="res://Scenes/2d_lights_and_shadows_neutral_point_light.webp" id="2_lwo0j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0r2b"]
+height = 116.0
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_esauv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.53, 0.3)
+texture = ExtResource("1_7ts17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g0r2b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.694008, 0.626359, 0.230995, 1)
+shadow_enabled = true
+texture = ExtResource("2_lwo0j")
