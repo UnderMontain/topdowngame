@@ -10,7 +10,11 @@ func _ready():
 
 func _physics_process(delta):
 	# Mover la bala en la dirección especificada
-	move_and_collide(velocity * delta)
-
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision:
+		var reflect = collision.get_remainder().bounce(collision.get_normal())
+		velocity = velocity.bounce(collision.get_normal())
+		rotation = velocity.angle()
+		move_and_collide(reflect)
 	# O si quieres que la bala desaparezca cuando colisione
 	 
