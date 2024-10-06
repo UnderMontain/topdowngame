@@ -8,6 +8,7 @@ var movement_speed = 50.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	call_deferred("actor_setup")
+	navigation_agent_2d.radius = 8
 
 func actor_setup():
 	await get_tree().physics_frame
@@ -17,6 +18,9 @@ func set_movement_target(movement_target: Vector2):
 	navigation_agent_2d.target_position = movement_target
 
 func _physics_process(delta: float) -> void:
+	if target:
+		navigation_agent_2d.target_position = target.position
+	
 	if navigation_agent_2d.is_navigation_finished():
 		return
 	

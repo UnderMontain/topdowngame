@@ -10,8 +10,7 @@ height = 60.64
 
 [node name="Bullet" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
-collision_layer = 2
-collision_mask = 4
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_qungt")
 speed = 400.0
