@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgqo4veh45eyy"]
+
+[ext_resource type="Script" path="res://Element/Guns/Uzi/uzi.gd" id="1_u143f"]
+[ext_resource type="Script" path="res://Element/Guns/Components/TypeShot/line.gd" id="2_luok5"]
+
+[node name="Uzi" type="Node"]
+script = ExtResource("1_u143f")
+
+[node name="TypeShot" type="Node" parent="."]
+script = ExtResource("2_luok5")

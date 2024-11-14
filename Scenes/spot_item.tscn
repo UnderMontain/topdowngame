@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://0lh6p4loec6u"]
+
+[ext_resource type="Script" path="res://Level/spot_item.gd" id="1_r8avp"]
+[ext_resource type="Resource" uid="uid://dg3cgqervmexl" path="res://Data/Items/shotgun_data.tres" id="2_v53lm"]
+[ext_resource type="Texture2D" uid="uid://b1o43w0ll4nyy" path="res://Sprites/Gun/35.png" id="3_8euhr"]
+[ext_resource type="Texture2D" uid="uid://cbklvsgsba547" path="res://floaty_32.png" id="4_76iix"]
+[ext_resource type="Texture2D" uid="uid://bfi16cocspx3t" path="res://Sprites/Light.png" id="4_lo8ut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ql0f"]
+
+[sub_resource type="Curve" id="Curve_pr8cg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.652893, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u76i3"]
+curve = SubResource("Curve_pr8cg")
+
+[sub_resource type="Gradient" id="Gradient_r1fbx"]
+offsets = PackedFloat32Array(0.429907, 0.67757, 0.976636)
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 1, 1, 0.962617, 0.962617, 0.962617, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gmyr1"]
+gradient = SubResource("Gradient_r1fbx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ryjj"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 100, 0)
+scale_min = 0.05
+scale_max = 0.05
+color = Color(1, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_gmyr1")
+alpha_curve = SubResource("CurveTexture_u76i3")
+turbulence_noise_strength = 7.52
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x55ju"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = true
+
+[node name="SpotItem" type="Area2D"]
+script = ExtResource("1_r8avp")
+item_data = ExtResource("2_v53lm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.780162
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8.835, 0)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_8euhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ql0f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.852542, 0.538603, 0.442345, 1)
+z_index = -1
+position = Vector2(0, 11.115)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_8ryjj")
+texture = ExtResource("4_lo8ut")
+lifetime = 1.2
+explosiveness = 1.0
+trail_lifetime = 0.4
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_x55ju")
+texture = ExtResource("4_76iix")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.99
+initial_velocity_max = 91.68
+angular_velocity_min = 99.31
+angular_velocity_max = 446.9
+color = Color(1, 0, 1, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

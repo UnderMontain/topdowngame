@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj3r52asryqin"]
+
+[ext_resource type="Script" path="res://Element/Guns/Components/Bullet/bullet_logic.gd" id="1_3fyl8"]
+[ext_resource type="Texture2D" uid="uid://byyr6x367rdt1" path="res://Sprites/Gun/19.png" id="2_f38tc"]
+[ext_resource type="Texture2D" uid="uid://bgafwuirmfh0" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_synab"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0r2b"]
+radius = 5.0
+height = 60.64
+
+[node name="Bullet" type="Area2D"]
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+collision_mask = 6
+script = ExtResource("1_3fyl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.53, 0.3)
+texture = ExtResource("2_f38tc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.735, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g0r2b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.919998, 0.520001)
+color = Color(0.694008, 0.626359, 0.230995, 1)
+energy = 1.82
+shadow_enabled = true
+texture = ExtResource("3_synab")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.718
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

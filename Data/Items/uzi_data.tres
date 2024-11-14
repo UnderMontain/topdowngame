@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=8 format=3 uid="uid://j17riotl43ih"]
+
+[ext_resource type="PackedScene" uid="uid://dj3r52asryqin" path="res://Element/Guns/Components/Bullet/bullet.tscn" id="1_82psw"]
+[ext_resource type="Script" path="res://Data/bullet_data.gd" id="2_c7855"]
+[ext_resource type="PackedScene" uid="uid://dgqo4veh45eyy" path="res://Element/Guns/Uzi/uzi_scene.tscn" id="2_mhciq"]
+[ext_resource type="Script" path="res://Data/gun_data.gd" id="3_tj3xe"]
+[ext_resource type="Texture2D" uid="uid://cwqy7r77iobdv" path="res://Element/Guns/Uzi/uzi.png" id="4_sm0jn"]
+[ext_resource type="Texture2D" uid="uid://b1o43w0ll4nyy" path="res://Sprites/Gun/35.png" id="5_20s5x"]
+
+[sub_resource type="Resource" id="Resource_srwct"]
+script = ExtResource("2_c7855")
+bullet = ExtResource("1_82psw")
+spread = 0.0
+speed_bullet = 30.0
+sprite = ExtResource("5_20s5x")
+type_item = 2
+
+[resource]
+script = ExtResource("3_tj3xe")
+bullet_data = SubResource("Resource_srwct")
+scene_gun = ExtResource("2_mhciq")
+damage = 0
+max_ammo = 0
+fire_rate = 0.1
+accuracy = 0
+range = 0
+sprite = ExtResource("4_sm0jn")
+type_item = 0

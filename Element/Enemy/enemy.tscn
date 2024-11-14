@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkxcysk3jalgy"]
+
+[ext_resource type="Script" path="res://Element/Enemy/enemy_logic.gd" id="1_rd0i5"]
+[ext_resource type="Texture2D" uid="uid://gv7iu1x4n25h" path="res://icon.svg" id="1_upumi"]
+[ext_resource type="Resource" uid="uid://dcs205oym3y3a" path="res://Data/Entitys/enemy_data.tres" id="2_ee7gf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tje7"]
+radius = 29.0909
+
+[node name="Enemy" type="CharacterBody2D" groups=["Hiteable"]]
+y_sort_enabled = true
+scale = Vector2(0.275, 0.275)
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_rd0i5")
+default_stats = ExtResource("2_ee7gf")
+layer = 2
+Mask = 80
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.866806, 0.000598939, 0.8668, 1)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("1_upumi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7tje7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 110.0
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+collision_mask = 255
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

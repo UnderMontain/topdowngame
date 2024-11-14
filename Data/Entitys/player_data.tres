@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Player" load_steps=2 format=3 uid="uid://cvxbog47ecqu1"]
+
+[ext_resource type="Script" path="res://Data/player_data.gd" id="1_qrji8"]
+
+[resource]
+script = ExtResource("1_qrji8")
+speed_bullet = 0
+dash_force = 250
+dash_duration = 2
+max_life = 100.0
+move_speed = 150.0

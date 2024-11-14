@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd2slr6k6ipey"]
+
+[ext_resource type="Script" path="res://Element/Guns/gun_equiped.gd" id="1_ighn7"]
+
+[node name="GunEquiped" type="Node2D"]
+script = ExtResource("1_ighn7")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="FireRate" type="Timer" parent="."]
+one_shot = true

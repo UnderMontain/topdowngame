@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dou3hojgc2irg"]
+
+[ext_resource type="Script" path="res://Element/Guns/ShootGun/shotgun.gd" id="1_s5gmf"]
+[ext_resource type="Script" path="res://Element/Guns/Components/TypeShot/spread.gd" id="2_yqn7r"]
+
+[node name="Shotgun" type="Node"]
+script = ExtResource("1_s5gmf")
+
+[node name="TypeShot" type="Node" parent="."]
+script = ExtResource("2_yqn7r")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DataEnemy" load_steps=2 format=3 uid="uid://dcs205oym3y3a"]
+
+[ext_resource type="Script" path="res://Data/enemy_data.gd" id="1_xpkt6"]
+
+[resource]
+script = ExtResource("1_xpkt6")
+maxtargetdistance = 400
+max_life = 20.0
+move_speed = 200.0
