@@ -12,7 +12,6 @@ var tween: Tween
 func _ready() -> void:
 	tween = get_parent().create_tween()
 	sprite_2d.texture = item_data.sprite
-	
 	tween.loop_finished.connect(_particles)
 	tween.set_loops()
 	tween.tween_property(sprite_2d,"position",Vector2(0,-10),0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -23,7 +22,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _particles(lop:int) -> void:
-	print(lop)
 	gpu_particles_2d.emitting = true
 	gpu_particles_2d.restart()
 	

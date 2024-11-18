@@ -1,22 +1,15 @@
 extends Area2D
 class_name BulletLogic
 
-var bullet_data:BulletData
+var bullet_data: BulletData
+var bullet_behavior : BulletBehavior
+
+
 var direction: Vector2 = Vector2.RIGHT  # Dirección inicial de la bala
 var speed: float = 400 # Velocidad de la bala
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-func _ready():
-	sprite_2d.texture = bullet_data.sprite
-	# Establecer la dirección y velocidad de la bala
-
-func _physics_process(delta):
-	
-	direction = Vector2.RIGHT.rotated(rotation)
-	
-	position += direction * speed * delta
-	
 
 func set_direction_and_rotation(_rotation:float,_position:Vector2):
 	rotation = _rotation
@@ -25,6 +18,18 @@ func set_direction_and_rotation(_rotation:float,_position:Vector2):
 
 func set_propiety(_data:BulletData):
 	bullet_data = _data
+	bullet_behavior = bullet_data.bullet_behavior.new()
+
+
+func _ready():
+	sprite_2d.texture = bullet_data.sprite
+	pass
+	# Establecer la dirección y velocidad de la bala
+
+func _physics_process(delta):
+	if bullet_behavior:
+		bullet_behavior.execute(self,bullet_data,delta)
+	
 
 func _on_timer_timeout() -> void:
 	#queue_free()

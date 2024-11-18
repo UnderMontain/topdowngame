@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=8 format=3 uid="uid://j17riotl43ih"]
+[gd_resource type="Resource" script_class="GunData" load_steps=9 format=3 uid="uid://j17riotl43ih"]
 
 [ext_resource type="PackedScene" uid="uid://dj3r52asryqin" path="res://Element/Guns/Components/Bullet/bullet.tscn" id="1_82psw"]
+[ext_resource type="Script" path="res://Element/Guns/Components/Bullet/bulletBehavior.gd" id="2_1hyok"]
 [ext_resource type="Script" path="res://Data/bullet_data.gd" id="2_c7855"]
 [ext_resource type="PackedScene" uid="uid://dgqo4veh45eyy" path="res://Element/Guns/Uzi/uzi_scene.tscn" id="2_mhciq"]
 [ext_resource type="Script" path="res://Data/gun_data.gd" id="3_tj3xe"]
@@ -11,7 +12,8 @@
 script = ExtResource("2_c7855")
 bullet = ExtResource("1_82psw")
 spread = 0.0
-speed_bullet = 30.0
+speed_bullet = 500.0
+bullet_behavior = ExtResource("2_1hyok")
 sprite = ExtResource("5_20s5x")
 type_item = 2
 
