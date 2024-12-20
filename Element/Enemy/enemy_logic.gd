@@ -59,14 +59,11 @@ func _update_target() -> void:
 #Recibe un resource o data con el Daño a aplicar 
 func _apply_Damage()-> void:
 	current_data.max_life -= 20
-	print("hit", current_data.max_life,name)
 	if current_data.max_life <= 0:
-		print("im dead", current_data.max_life)
 		_reset_stats()
 
 func _reset_stats() -> void:
 	current_data = default_stats
-	print("Reset stats ", current_data.max_life)
 #Shoot
 func _on_timer_timeout() -> void:
 	pass

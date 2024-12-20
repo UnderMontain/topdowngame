@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dj3r52asryqin"]
 
-[ext_resource type="Script" path="res://Element/Guns/Components/Bullet/bullet_logic.gd" id="1_3fyl8"]
+[ext_resource type="Script" path="res://Element/Guns/Components/Bullet/bullet.gd" id="1_3fyl8"]
 [ext_resource type="Texture2D" uid="uid://byyr6x367rdt1" path="res://Sprites/Gun/19.png" id="2_f38tc"]
 [ext_resource type="Texture2D" uid="uid://bgafwuirmfh0" path="res://Sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_synab"]
 
@@ -13,6 +13,7 @@ y_sort_enabled = true
 scale = Vector2(0.2, 0.2)
 collision_layer = 8
 collision_mask = 6
+input_pickable = false
 script = ExtResource("1_3fyl8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,5 +1,5 @@
 extends Area2D
-class_name BulletLogic
+class_name Bullet
 
 var bullet_data: BulletData
 var bullet_behavior : BulletBehavior
@@ -18,7 +18,7 @@ func set_direction_and_rotation(_rotation:float,_position:Vector2):
 
 func set_propiety(_data:BulletData):
 	bullet_data = _data
-	bullet_behavior = bullet_data.bullet_behavior.new()
+	bullet_behavior = bullet_data.bullet_behavior.new(self)
 
 
 func _ready():
@@ -28,7 +28,7 @@ func _ready():
 
 func _physics_process(delta):
 	if bullet_behavior:
-		bullet_behavior.execute(self,bullet_data,delta)
+		bullet_behavior.execute(delta)
 	
 
 func _on_timer_timeout() -> void:
@@ -40,8 +40,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Hiteable"):
 		var enemy = body as EnemyLogic
 		enemy._apply_Damage()
+		bullet_behavior.hit_somebody(enemy)
 		 # Replace with function body.
-	queue_free()
+	#queue_free()
 
 ## Bounds, code
 	#var collision: KinematicCollision2D = move_and_collide(velocity * speed)

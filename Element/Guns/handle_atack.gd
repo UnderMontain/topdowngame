@@ -7,7 +7,7 @@ class_name HandleAtack
 #Setup equiped gun
 var gun_offset: Vector2 = Vector2(20, 0)
 var _is_fliped = false
-
+signal Equiped(gun:Gun)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,13 +28,11 @@ func _process(_delta: float) -> void:
 			_is_fliped = false
 
 func _set_gun(_gun: Gun, _player: Node2D) -> void:
-	if gun_equiped != null:
-		gun_equiped._unequiped()
+	if gun_equiped:
 		gun_equiped._equiped(_gun)
-	else :
-		gun_equiped._equiped(_gun)
-	gun_equiped.position =  gun_offset
-	self.player = player
-	
+		gun_equiped.position =  gun_offset
+		self.player = player
+		emit_signal("Equiped", _gun)
+		
 func realeseAttack() -> void:
 	gun_equiped.execute(player.direction_mouse)

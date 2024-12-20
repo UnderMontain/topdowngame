@@ -8,11 +8,6 @@ class_name GunData
 @export var fire_rate: float
 @export var accuracy: int
 
-
-@export_range(1, 100,1) var range:int 
-
-
-
 func get_intance() -> Gun:
 	var instance = scene_gun.instantiate() as Gun
 	instance.init(self)

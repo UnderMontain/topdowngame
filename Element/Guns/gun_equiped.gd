@@ -16,12 +16,14 @@ func _ready() -> void:
 	pass
 
 func _equiped(_gun:Gun) -> void:
-	if gun: _unequiped()
+	if gun != null: _unequiped()
 	gun = _gun
 	set_up_gun()
 	add_child(_gun)
 
 func _unequiped() -> void:
+	fire_rate.timeout.disconnect(gun._on_shoot_ready)
+	gun.queue_free()
 	pass
 	
 func set_up_gun() -> void:
