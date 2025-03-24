@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://654gt0t7au26"]
 
-[ext_resource type="Script" path="res://Element/Utility/pool_object.gd" id="1_jbcox"]
+[ext_resource type="Script" uid="uid://d3q30e5uv7x3r" path="res://Element/Utility/pool_object.gd" id="1_jbcox"]
 
 [node name="PoolObject" type="Node"]
 script = ExtResource("1_jbcox")

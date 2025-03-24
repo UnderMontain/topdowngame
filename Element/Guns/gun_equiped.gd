@@ -4,6 +4,7 @@ class_name GunEquiped
 var gun: Gun
 @onready var sprite: Sprite2D = $Sprite
 @onready var fire_rate: Timer = $FireRate
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func execute(_direction:Vector2) -> void:
 	if gun:

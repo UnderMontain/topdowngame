@@ -5,6 +5,8 @@ class_name EnemyLogic
 @export var default_stats: EnemyData
 var current_data: EnemyData
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 @export var target: Node2D = null
 
@@ -41,6 +43,12 @@ func _physics_process(_delta: float) -> void:
 		
 		var velocity_dir = current_agent_position.direction_to(next_path_position)
 		velocity = velocity.lerp(velocity_dir.normalized() * current_data.move_speed, 0.02)
+		
+		if velocity_dir.x < 0 && animated_sprite_2d.flip_h == false:
+			animated_sprite_2d.flip_h = true
+		elif  velocity_dir.x > 0 && animated_sprite_2d.flip_h == true:  
+			animated_sprite_2d.flip_h = false
+		
 		move_and_slide()
 	else:
 		velocity = velocity.lerp(Vector2.ZERO,0.065)

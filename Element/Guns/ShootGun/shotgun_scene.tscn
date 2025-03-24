@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dou3hojgc2irg"]
 
-[ext_resource type="Script" path="res://Element/Guns/ShootGun/shotgun.gd" id="1_s5gmf"]
-[ext_resource type="Script" path="res://Element/Guns/Components/TypeShot/spread.gd" id="2_yqn7r"]
+[ext_resource type="Script" uid="uid://c0y44hxff3o7i" path="res://Element/Guns/ShootGun/shotgun.gd" id="1_s5gmf"]
+[ext_resource type="Script" uid="uid://e4hb5hxq5yfv" path="res://Element/Guns/Components/TypeShot/spread.gd" id="2_yqn7r"]
 
 [node name="Shotgun" type="Node"]
 script = ExtResource("1_s5gmf")

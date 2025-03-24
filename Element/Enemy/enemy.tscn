@@ -1,15 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkxcysk3jalgy"]
+[gd_scene load_steps=12 format=3 uid="uid://bkxcysk3jalgy"]
 
-[ext_resource type="Script" path="res://Element/Enemy/enemy_logic.gd" id="1_rd0i5"]
-[ext_resource type="Texture2D" uid="uid://gv7iu1x4n25h" path="res://icon.svg" id="1_upumi"]
+[ext_resource type="Script" uid="uid://cppa634ldu78k" path="res://Element/Enemy/enemy_logic.gd" id="1_rd0i5"]
 [ext_resource type="Resource" uid="uid://dcs205oym3y3a" path="res://Data/Entitys/enemy_data.tres" id="2_ee7gf"]
+[ext_resource type="Texture2D" uid="uid://j6g7qxa7c004" path="res://Sprites/PJs/mob1.png" id="3_sbiyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4pxl"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q4f2"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x788a"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe781"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6sil"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bctx"]
+atlas = ExtResource("3_sbiyk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmar2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4pxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q4f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x788a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe781")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6sil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bctx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7tje7"]
-radius = 29.0909
+radius = 9.01
 
 [node name="Enemy" type="CharacterBody2D" groups=["Hiteable"]]
 y_sort_enabled = true
-scale = Vector2(0.275, 0.275)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -19,10 +68,10 @@ default_stats = ExtResource("2_ee7gf")
 layer = 2
 Mask = 80
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.866806, 0.000598939, 0.8668, 1)
-scale = Vector2(0.425, 0.425)
-texture = ExtResource("1_upumi")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dmar2")
+autoplay = "default"
+frame_progress = 0.995855
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7tje7")

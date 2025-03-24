@@ -18,10 +18,11 @@ var target_item: SpotItem
 @export var can_pickup = false
 @export var bullet_scene: PackedScene
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer_Shooting
 @onready var handle_atack: HandleAtack = $HandleAtack
 
-
+ 
 func _ready() -> void:
 	current_data_player = _default_data_player
 	handle_atack.player = self
@@ -53,9 +54,20 @@ func _physics_process(delta: float) -> void:
 func _handle_movement(_delta: float) -> void:
 	if !is_dashing:
 		var move_vector = Input.get_vector("move_left","move_right","move_up","move_down") 
-		var velocity_dir = velocity.lerp(move_vector * current_data_player.move_speed, 0.08)
+		#velocidad curva
+		#var velocity_dir = velocity.lerp(move_vector * current_data_player.move_speed, 0.08)
+		var velocity_dir = move_vector * current_data_player.move_speed
+		if move_vector.x < 0 && animated_sprite_2d.flip_h == false:
+			animated_sprite_2d.flip_h = true
+		elif  move_vector.x > 0 && animated_sprite_2d.flip_h == true:  
+			animated_sprite_2d.flip_h = false
 		velocity = velocity_dir
 		move_and_slide()
+		
+		if move_vector == Vector2.ZERO:
+			animated_sprite_2d.play("default")
+		else:
+			animated_sprite_2d.play("run")
 
 func _handle_dash(delta: float) -> void:
 	if is_dashing:
@@ -65,7 +77,8 @@ func _handle_dash(delta: float) -> void:
 			dash_ready = false
 			var dash_velocity = velocity.normalized().lerp(velocity.normalized()* current_data_player.dash_force *delta,dash_time_elapsed)
 			var collider = move_and_collide(dash_velocity)
-			modulate = Color.DEEP_PINK
+			animated_sprite_2d.play("roll")
+			
 			if collider != null:
 				dash_time_elapsed = 2
 		else:

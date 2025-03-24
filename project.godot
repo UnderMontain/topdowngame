@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TopDownGame"
 run/main_scene="res://Level/world.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=1000
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=4
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -122,5 +123,5 @@ common/physics_ticks_per_second=120
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-anti_aliasing/screen_space_roughness_limiter/enabled=false
 viewport/hdr_2d=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false

@@ -25,6 +25,8 @@ func create_area2d():
 func hit_somebody(hit_info):
 	if bounce <= 0:
 		bullet.queue_free()
+	
+	#Busca el proximo enemigo si quedan rebotes
 	var results = area_bounce.get_overlapping_bodies()
 	if results.size() > 1:
 		var nearest_enemy = null
@@ -37,7 +39,7 @@ func hit_somebody(hit_info):
 					shortest_distance = distance
 					nearest_enemy = result
 
-	  # Si hay un enemigo cercano, redirige la bala
+		# Si hay un enemigo cercano, redirige la bala
 		if nearest_enemy:
 			var direction:Vector2 = (nearest_enemy.global_position - bullet.global_position).normalized()
 			bounce -= 1

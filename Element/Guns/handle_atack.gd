@@ -5,7 +5,7 @@ class_name HandleAtack
 @onready var gun_equiped: GunEquiped = $GunEquiped
 
 #Setup equiped gun
-var gun_offset: Vector2 = Vector2(20, 0)
+var gun_offset: Vector2 = Vector2(30, 0)
 var _is_fliped = false
 signal Equiped(gun:Gun)
 # Called when the node enters the scene tree for the first time.

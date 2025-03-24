@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://0lh6p4loec6u"]
 
-[ext_resource type="Script" path="res://Level/spot_item.gd" id="1_r8avp"]
-[ext_resource type="Resource" uid="uid://dg3cgqervmexl" path="res://Data/Items/shotgun_data.tres" id="2_v53lm"]
+[ext_resource type="Script" uid="uid://bw1kn3ebsv38x" path="res://Level/spot_item.gd" id="1_r8avp"]
+[ext_resource type="Resource" uid="uid://dg3cgqervmexl" path="res://Element/Utility/shotgun_data.tres" id="2_v53lm"]
 [ext_resource type="Texture2D" uid="uid://b1o43w0ll4nyy" path="res://Sprites/Gun/35.png" id="3_8euhr"]
 [ext_resource type="Texture2D" uid="uid://cbklvsgsba547" path="res://floaty_32.png" id="4_76iix"]
 [ext_resource type="Texture2D" uid="uid://bfi16cocspx3t" path="res://Sprites/Light.png" id="4_lo8ut"]
@@ -63,11 +63,11 @@ modulate = Color(0.852542, 0.538603, 0.442345, 1)
 z_index = -1
 position = Vector2(0, 11.115)
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_8ryjj")
 texture = ExtResource("4_lo8ut")
 lifetime = 1.2
 explosiveness = 1.0
 trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_8ryjj")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_x55ju")

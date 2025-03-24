@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=17 format=3 uid="uid://dg3cgqervmexl"]
+
+[ext_resource type="PackedScene" uid="uid://dj3r52asryqin" path="res://Element/Guns/Components/Bullet/bullet.tscn" id="1_gbluc"]
+[ext_resource type="Texture2D" uid="uid://ycqa1oowevrf" path="res://Sprites/Gun/Weapon-Bullet-Sheet.png" id="1_rvsm2"]
+[ext_resource type="Script" uid="uid://chye0eju3ihp1" path="res://Data/bullet_data.gd" id="1_wpyvl"]
+[ext_resource type="Script" uid="uid://bosmqkpiofkso" path="res://Element/Guns/Components/Bullet/bulletBehavior.gd" id="2_18ccy"]
+[ext_resource type="PackedScene" uid="uid://dou3hojgc2irg" path="res://Element/Guns/ShootGun/shotgun_scene.tscn" id="3_11rjy"]
+[ext_resource type="Script" uid="uid://bw5jeqfhgd1kk" path="res://Data/gun_data.gd" id="4_fpujj"]
+[ext_resource type="Texture2D" uid="uid://byyr6x367rdt1" path="res://Sprites/Gun/19.png" id="5_cr8d4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pq77"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxqn"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1grh"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hchaj"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3x3h"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp8f8"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p40io"]
+atlas = ExtResource("1_rvsm2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5o17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pq77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1grh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hchaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3x3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp8f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p40io")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_tfv13"]
+script = ExtResource("1_wpyvl")
+bullet = ExtResource("1_gbluc")
+spread = 40.0
+speed_bullet = 300.0
+bullet_behavior = ExtResource("2_18ccy")
+sprite = ExtResource("5_cr8d4")
+type_item = 2
+
+[resource]
+script = ExtResource("4_fpujj")
+bullet_data = SubResource("Resource_tfv13")
+scene_gun = ExtResource("3_11rjy")
+damage = 0
+max_ammo = 0
+fire_rate = 2.0
+accuracy = 0
+sprite = SubResource("AtlasTexture_1pq77")
+animation = SubResource("SpriteFrames_v5o17")
+type_item = 0

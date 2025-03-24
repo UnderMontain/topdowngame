@@ -3,6 +3,7 @@ class_name Bullet
 
 var bullet_data: BulletData
 var bullet_behavior : BulletBehavior
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 var direction: Vector2 = Vector2.RIGHT  # Dirección inicial de la bala
@@ -22,7 +23,8 @@ func set_propiety(_data:BulletData):
 
 
 func _ready():
-	sprite_2d.texture = bullet_data.sprite
+	animated_sprite_2d.sprite_frames = bullet_data.animation
+	animated_sprite_2d.play("default")
 	pass
 	# Establecer la dirección y velocidad de la bala
 
